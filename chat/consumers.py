@@ -8,7 +8,7 @@ from .models import Message
 class ChatConsumer(WebsocketConsumer):
     @database_sync_to_async
     def create_chat(self, msg, sender):
-        new_msg = Message.objects.create(sender=sender, msg=msg)
+        new_msg = Message.objects.create(author=sender, context=msg)
         new_msg.save()
         return new_msg
 
