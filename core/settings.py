@@ -129,7 +129,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 ASGI_APPLICATION = "core.routing.application"
-LIVE =False
+LIVE=False
 if LIVE:
     CHANNEL_LAYERS = {
         'default':{
