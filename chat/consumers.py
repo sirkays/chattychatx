@@ -2,16 +2,8 @@
 import json
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
-from channels.db import database_sync_to_async
-from .models import Message
 
 class ChatConsumer(WebsocketConsumer):
-    @database_sync_to_async
-    def create_chat(self, msg, sender):
-        new_msg = Message.objects.create(author=sender, context=msg)
-        new_msg.save()
-        return new_msg
-
     def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'chat_%s' % self.room_name
@@ -48,8 +40,7 @@ class ChatConsumer(WebsocketConsumer):
     # Receive message from room group
     def chat_message(self, event):
         message = event['message']
-        new_msg = await self.create_chat(message, message)  # It is necessary to await creation of messages
         # Send message to WebSocket
-        await self.send(text_data=json.dumps({
+        self.send(text_data=json.dumps({
             'message': message
         }))
