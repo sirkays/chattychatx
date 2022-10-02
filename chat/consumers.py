@@ -3,6 +3,7 @@ import json
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 from channels.db import database_sync_to_async
+from .models import Message
 
 class ChatConsumer(WebsocketConsumer):
     @database_sync_to_async
