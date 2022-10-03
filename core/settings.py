@@ -46,7 +46,7 @@ INSTALLED_APPS = [
 
 ]
 CORS_ALLOWED_ORIGINS = [
-    "https://kuboc.rextexh.com/",
+    "https://kuboc.rextexh.com",
 
 ]
 MIDDLEWARE = [
