@@ -16,7 +16,8 @@ def room(request, room_name):
 
 @csrf_exempt
 def set_room(request):
-    room= None
+    chat_room= None
+
     if "https://kuboc.rextexh.com/" in request.META['HTTP_HOST'] or "http://127.0.0.1:8000/" in request.META['HTTP_HOST']:
         chat_room = ChatRoom.get_room(request.POST.get("room"))
     return JsonResponse({"status":chat_room})
