@@ -59,7 +59,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-X_FRAME_OPTIONS = 'ALLOW-FROM https://kuboc.rextexh.com/'
+X_FRAME_OPTIONS = 'ALLOW-FROM https://kuboc.rextexh.com'
 ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
