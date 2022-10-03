@@ -12,4 +12,5 @@ def room(request, room_name):
 
 def set_room(request):
     room = request.POST.get("room")
-    return JsonResponse({"status":room})
+    room2 = request.GET.get("room")
+    return JsonResponse({"status":room, "roomw":room2})
