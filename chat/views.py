@@ -8,7 +8,7 @@ def index(request):
 
 
 def room(request, room_name):
-    chat_room = ChatRoom.get_room(request.POST.get("room"),False)
+    chat_room = ChatRoom.get_room(room_name,False)
     if chat_room:
         return render(request, 'chat/room.html', {
             'room_name': chat_room
