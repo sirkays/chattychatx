@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import JsonResponse,HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import ChatRoom
@@ -11,9 +11,9 @@ def room(request,room_name):
     chat_room = ChatRoom.get_room(room_name,False)
     if chat_room:
         return render(request, 'chat/room.html', {
-            'room_name': chat_room
+            'room_name': chat_room.title
         })
-    return JsonResponse({})
+    return redirect("index")
 
 @csrf_exempt
 def set_room(request):
