@@ -32,5 +32,5 @@ class ChatRoom(models.Model):
         return False
         
     def __str__(self):
-        return self.room
+        return str(self.room)
 
