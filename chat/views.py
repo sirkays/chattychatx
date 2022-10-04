@@ -6,18 +6,21 @@ from .models import ChatRoom
 def index(request):
     return render(request, 'chat/index.html', {})
 
-
-def room(request,room_name):
-    chat_room = ChatRoom.get_room(room_name,False)
-    if chat_room:
+def room(request,room_name,user):
+    agent = ChatRoom.send_user_agent(room_name,user)
+    if agent:
         return render(request, 'chat/room.html', {
-            'room_name': chat_room.title
+            'room_name': room_name,
+            'user_agent':agent
         })
     return redirect("index")
 
 @csrf_exempt
 def set_room(request):
-    chat_room= None
+    room = request.POST.get("room")
+    agent = request.POST.get("agent")
     #if "https://kuboc.rextexh.com/" in request.META['HTTP_HOST'] or "http://127.0.0.1:8000/" in request.META['HTTP_HOST']:
-    chat_room = ChatRoom.get_room(request.POST.get("room"))
-    return JsonResponse({"status":chat_room.title})
+    agent = ChatRoom.send_user_agent(room,agent)
+    if agent:
+        return JsonResponse({"status":room})
+    return JsonResponse({"status":"Not allowed"})
