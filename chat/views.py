@@ -31,4 +31,4 @@ def set_room(request):
     #agent = ChatRoom.send_user_agent(room,user)
     if room:
         return JsonResponse({"status":"success","room":room.room})
-    return JsonResponse({"status":"Not allowed"})
+    return JsonResponse({"status":"Not allowed","room":room,"user":user,"other_user":other_user})
