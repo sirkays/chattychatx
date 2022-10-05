@@ -134,9 +134,9 @@
 
         chatSocket.onmessage = function (e) {
             const data = JSON.parse(e.data);
-            console.log(data.message);
+            //console.log(data.message);
            // document.querySelector('#chat-log').value += (data.message + '\n');
-            if(user_agent == 0){
+            if(data.message_user == '0'){
                 $(".chat-messages-body").append(`
             <div class="messages-item --your-message">
                 <div class="messages-item__avatar"><img src="https://pro-theme.com/html/teamhost/assets/img/user-list-4.png" alt="user"></div>
@@ -171,7 +171,8 @@
             const message = messageInputDom.value;
             console.log("message: ",message);
             chatSocket.send(JSON.stringify({
-                'message': message
+                'message': message,
+                'message_user':user_agent,
             }));
             messageInputDom.value = '';
         };

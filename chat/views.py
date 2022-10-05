@@ -10,9 +10,9 @@ def room(request,room,current_user):
     room = ChatBoxData.get_room(room)
     if room:
         if current_user == room.user1:
-            agent = 0
+            agent = '0'
         else:
-            agent = 1
+            agent = '1'
         return render(request, 'chat/room.html', {
             'room_name': room.room,
             'user_agent':agent
