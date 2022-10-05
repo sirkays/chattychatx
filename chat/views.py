@@ -14,7 +14,7 @@ def room(request,room,current_user):
         else:
             agent = 1
         return render(request, 'chat/room.html', {
-            'room_name': room,
+            'room_name': room.room,
             'user_agent':agent
         })
     return redirect("index")
@@ -31,4 +31,4 @@ def set_room(request):
     #agent = ChatRoom.send_user_agent(room,user)
     if room:
         return JsonResponse({"status":"success","room":room.room})
-    return JsonResponse({"status":"Not allowed","room":room,"user":user,"other_user":other_user})
+    return JsonResponse({"status":"Not allowed"})
