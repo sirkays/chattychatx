@@ -12,9 +12,7 @@ class ChatBoxData(models.Model):
     
     @classmethod
     def create_room(cls,room,user1,user2):
-        if room and user1 and user2:
-            return cls.objects.create(room=room, user1=user1,user2=user2)
-        return False
+        return cls.objects.create(room=room, user1=user1,user2=user2)
 
     @classmethod
     def get_room(cls,room):
