@@ -1,16 +1,20 @@
 from django.shortcuts import render,redirect
 from django.http import JsonResponse,HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import ChatRoom
+from .models import ChatBoxData
 
 def index(request):
     return render(request, 'chat/index.html', {})
 
-def room(request,room_name,user):
-    agent = ChatRoom.send_user_agent(room_name,user)
-    if agent:
+def room(request,room,current_user):
+    room = ChatBoxData.get_room(room)
+    if room:
+        if current_user == room.user1:
+            agent = 0
+        else:
+            agent = 1
         return render(request, 'chat/room.html', {
-            'room_name': room_name,
+            'room_name': room,
             'user_agent':agent
         })
     return redirect("index")
@@ -18,9 +22,13 @@ def room(request,room_name,user):
 @csrf_exempt
 def set_room(request):
     room = request.POST.get("room")
-    agent = request.POST.get("agent")
+    user = request.POST.get("user")
+    other_user = request.POST.get("other_user")
+    room = ChatBoxData.get_room(room)
+    if room == False:
+        room  =  ChatBoxData.create_room(room,user,other_user)
     #if "https://kuboc.rextexh.com/" in request.META['HTTP_HOST'] or "http://127.0.0.1:8000/" in request.META['HTTP_HOST']:
-    agent = ChatRoom.send_user_agent(room,agent)
-    if agent:
-        return JsonResponse({"status":room})
+    #agent = ChatRoom.send_user_agent(room,user)
+    if room:
+        return JsonResponse({"status":"success","room":room.room})
     return JsonResponse({"status":"Not allowed"})
