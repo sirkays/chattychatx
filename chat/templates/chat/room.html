@@ -135,10 +135,13 @@
 
 {{ room_name|json_script:"room-name" }}
 {{ user_agent|json_script:"user_agent" }}
+{{ my_image|json_script:"my_image" }}
+{{ other_image|json_script:"other_image" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
         const user_agent = JSON.parse(document.getElementById('user_agent').textContent);
-
+        const my_image = JSON.parse(document.getElementById('my_image').textContent);
+        const other_image = JSON.parse(document.getElementById('other_image').textContent);
         const chatSocket = new WebSocket(
             'wss://' +
             window.location.host +
@@ -154,7 +157,7 @@
             if(data.message_user == '0'){
                 $(".chat-messages-body").append(`
             <div class="messages-item --your-message">
-                <div class="messages-item__avatar"><img src="https://pro-theme.com/html/teamhost/assets/img/user-list-4.png" alt="user"></div>
+                <div class="messages-item__avatar"><img src="https://pro-theme.com/html/teamhost/assets/img/${my_image}" alt="user"></div>
                 <div class="messages-item__text">${data.message}</div>
             </div>
             `)
@@ -162,7 +165,7 @@
                 $(".chat-messages-body").append(`
             <div class="messages-item --friend-message">
                 <div class="messages-item__text">${data.message}</div>
-                <div class="messages-item__avatar"><img src="https://pro-theme.com/html/teamhost/assets/img/user-list-3.png" alt="user"></div>
+                <div class="messages-item__avatar"><img src="https://pro-theme.com/html/teamhost/assets/img/${other_image}" alt="user"></div>
             </div>
 
             `)
