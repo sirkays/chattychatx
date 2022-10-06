@@ -36,16 +36,18 @@
                             </div>
                             <div class="chat-messages-body">
                                 {% for chat in chatbox.chats.all %}
-                                {% if chat.user == '0' %}
-                                    <div class="messages-item --your-message">
-                                        <div class="messages-item__avatar"><img src="https://pro-theme.com/html/teamhost/assets/img/user-list-4.png" alt="user"></div>
-                                        <div class="messages-item__text">{{chat.message}}</div>
-                                    </div>
-                                {% else %}
-                                    <div class="messages-item --friend-message">
-                                        <div class="messages-item__text">{{chat.message}}</div>
-                                        <div class="messages-item__avatar"><img src="https://pro-theme.com/html/teamhost/assets/img/user-list-3.png" alt="user"></div>
-                                    </div>
+                                {% if chat.available %}
+                                    {% if chat.user == '0' %}
+                                        <div class="messages-item --your-message">
+                                            <div class="messages-item__avatar"><img src="https://pro-theme.com/html/teamhost/assets/img/user-list-4.png" alt="user"></div>
+                                            <div class="messages-item__text">{{chat.message}}</div>
+                                        </div>
+                                    {% else %}
+                                        <div class="messages-item --friend-message">
+                                            <div class="messages-item__text">{{chat.message}}</div>
+                                            <div class="messages-item__avatar"><img src="https://pro-theme.com/html/teamhost/assets/img/user-list-3.png" alt="user"></div>
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
                                 {% endfor %}
 
