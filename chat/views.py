@@ -23,11 +23,12 @@ def room(request,room,current_user,my_image,other_image):
             'user_agent':agent,
             'my_image':room.my_image,
             'other_image':room.other_image,
+            "chatbox":room
             
         })
     return redirect("index")
 
-    
+
 
 @csrf_exempt
 def set_room(request):

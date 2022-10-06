@@ -32,4 +32,11 @@ class ChatBoxData(models.Model):
         except ObjectDoesNotExist:
             return False
 
+class Chat(models.Model):
+    chat_box = models.ForeignKey(ChatBoxData,on_delete=models.CASCADE,related_name="chats")
+    message = models.TextField(default='')
+    user = models.CharField(max_length=250,default='')
+    timestamp = models.DateTimeField(auto_now=True)
+    available = models.BooleanField(default=True)
+
 
