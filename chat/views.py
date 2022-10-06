@@ -10,8 +10,8 @@ def new(request):
     return render(request, 'chat/new.html', {})
 
 
-def room(request,room,current_user):
-    room = ChatBoxData.get_room(room)
+def room(request,room,current_user,my_image,other_image):
+    room = ChatBoxData.get_room(room,my_image,other_image)
 
     if room:
         if current_user == room.user1:
