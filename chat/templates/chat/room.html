@@ -10,6 +10,20 @@
 <script src="https://pro-theme.com/html/teamhost/assets/js/main.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<style>
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 12px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+</style>
 <div class="chat-messages-box">
                             <div class="chat-messages-head">
                                 <div class="user-item">
@@ -75,7 +89,9 @@
                                     <div class="chat-messages-form">
                                         <!--<div class="chat-messages-form-btns"><button class="ico_emoji-happy"></button><button class="ico_gallery"></button></div>-->
                                         <div class="chat-messages-form-controls"><input class="chat-messages-input" id="chat-message-input" type="text" placeholder="Type a message"></div>
-                                        <div class="chat-messages-form-btn"><button style="padding: 8px; border: 1px solid salmon; background-color:  #008CBA;" class="chat-message-submit" id="chat-message-submit" type="button">send</button></div>
+                                        <div class="chat-messages-form-btn">
+                                            <button class="button" id="chat-message-submit" type="button">send</button>
+                                        </div>
                                     </div>
                                 
                             </div>
