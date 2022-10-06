@@ -6,8 +6,13 @@ from .models import ChatBoxData
 def index(request):
     return render(request, 'chat/index.html', {})
 
+def new(request):
+    return render(request, 'chat/new.html', {})
+
+
 def room(request,room,current_user):
     room = ChatBoxData.get_room(room)
+
     if room:
         if current_user == room.user1:
             agent = '0'
