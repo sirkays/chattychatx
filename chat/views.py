@@ -27,6 +27,8 @@ def room(request,room,current_user,my_image,other_image):
         })
     return redirect("index")
 
+    
+
 @csrf_exempt
 def set_room(request):
     room_name = request.POST.get("room")

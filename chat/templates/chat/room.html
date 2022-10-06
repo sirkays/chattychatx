@@ -157,7 +157,7 @@
             if(data.message_user == '0'){
                 $(".chat-messages-body").append(`
             <div class="messages-item --your-message">
-                <div class="messages-item__avatar"><img src="https://kuboc.rextexh.com/media/${my_image}" alt="user"></div>
+                <div class="messages-item__avatar"><img src="https://kuboc.rextexh.com/media/profiles/${my_image}" alt="user"></div>
                 <div class="messages-item__text">${data.message}</div>
             </div>
             `)
@@ -165,7 +165,7 @@
                 $(".chat-messages-body").append(`
             <div class="messages-item --friend-message">
                 <div class="messages-item__text">${data.message}</div>
-                <div class="messages-item__avatar"><img src="https://kuboc.rextexh.com/media/${other_image}" alt="user"></div>
+                <div class="messages-item__avatar"><img src="https://kuboc.rextexh.com/media/profiles/${other_image}" alt="user"></div>
             </div>
 
             `)
