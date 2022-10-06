@@ -32,8 +32,8 @@ def set_room(request):
     room_name = request.POST.get("room")
     user = request.POST.get("user")
     other_user = request.POST.get("other_user")
-    other_user = request.POST.get("my_image")
-    other_user = request.POST.get("other_image")
+    my_image = request.POST.get("my_image")
+    other_image = request.POST.get("other_image")
     room = ChatBoxData.get_room(room_name,my_image,other_image)
     if room == False:
         room  =  ChatBoxData.create_room(room_name,user,other_user,my_image,other_image)
