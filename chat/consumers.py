@@ -3,6 +3,8 @@ import json
 from channels.db import database_sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
 from .models import Chat,ChatBoxData
+from django.utils import timezone
+
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
@@ -50,8 +52,10 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def chat_message(self, event):
         message = event['message']
         message_user = event['message_user']
+        now = timezone.now()
         # Send message to WebSocket
         await self.send(text_data=json.dumps({
             'message': message,
-            'message_user':message_user
+            'message_user':message_user,
+            'timestamp':now
         }))

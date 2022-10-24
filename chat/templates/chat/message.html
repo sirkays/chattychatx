@@ -3641,8 +3641,22 @@ html {
                                     <p>Alright send an offer so we can work together</p>
                                     <span>4:04pm</span>
                             </div>-->
-
-                            <div class="msg-offer left">
+                            {% for chat in chatbox.chats.all %}
+                            {% if chat.available %}
+                                {% if chat.user == '0' %}
+                                <div class="txt-msg left" style="margin-bottom:15px;">
+                                    <p>{{chat.message}}</p>
+                                    <span>{{chat.timestamp}}</span>
+                                </div>
+                                {% else %}
+                                <div class="txt-msg right" style="margin-bottom:15px;">
+                                    <p>{{chat.message}}</p>
+                                    <span>{{chat.timestamp}}</span>
+                                </div>
+                                {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                            <!--<div class="msg-offer left">
                                     <div>
                                         <h1>I can manage and create content for your instagram account</h1>
                                         <div class="details">
@@ -3655,7 +3669,7 @@ html {
                                         <span class="accepted d-none">Accepted</span>
                                     </div>
                                     <span>4:04pm</span>
-                            </div>
+                            </div>-->
 
                             
                         </div>
@@ -3681,7 +3695,7 @@ html {
                     <div class="swiper v-slick-page width-100 height-100" >
                         <div class="swiper-wrapper">
                             <!-- Body Inner -->
-                            <div class="swiper-slide height-auto" style="padding:1rem 2.5rem ;">
+                            <div class="swiper-slide height-auto" style="padding:1rem 2.5rem;">
                                 <!-- PAGE TITLE -->
                                 <h1 class="title">Create Custom Offer</h1>
 
@@ -3970,16 +3984,16 @@ html {
                // document.querySelector('#chat-log').value += (data.message + '\n');
                 if(data.message_user == '0'){
                     $(".chat-messages-body").append(`
-                    <div class="txt-msg left">
+                    <div class="txt-msg left" style="margin-bottom:15px;">
                                     <p>${data.message}</p>
-                                    <span>3:32pm</span>
+                                    <span>{{timestamp}}</span>
                             </div>
                 `)
                 }else{
                     $(".chat-messages-body").append(`
-                    <div class="txt-msg right">
+                    <div class="txt-msg right" style="margin-bottom:15px;">
                                     <p>${data.message}</p>
-                                    <span>3:32pm</span>
+                                    <span>{{timestamp}}</span>
                             </div>
     
                 `)
