@@ -54,7 +54,7 @@ def set_room_mobile(request,room,user1,user2):
     #if "https://kuboc.rextexh.com/" in request.META['HTTP_HOST'] or "http://127.0.0.1:8000/" in request.META['HTTP_HOST']:
     #agent = ChatRoom.send_user_agent(room,user)
     if room:
-        return redirect("chat_user" room=room, current_user=user)
+        return redirect("chat_user", room=room, current_user=user)
     return JsonResponse({"status":"Not allowed"})
 
 
