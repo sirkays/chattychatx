@@ -14,20 +14,13 @@ class ChatBoxData(models.Model):
         return f'Status: {self.status}, User1: {self.user1} User2: {self.user2}' 
     
     @classmethod
-    def create_room(cls,room,user1,user2,my_image,other_image):
-        return cls.objects.create(room=room, user1=user1,user2=user2,my_image=my_image,other_image=other_image)
+    def create_room(cls,room,user1,user2):
+        return cls.objects.create(room=room, user1=user1,user2=user2)
 
     @classmethod
-    def get_room(cls,room,my_image,other_image):
+    def get_room(cls,room):
         try:
             obj= cls.objects.get(room=room)
-            if obj.my_image != my_image:
-                obj.my_image = my_image
-                obj.save()
-            
-            if obj.other_image != other_image:
-                obj.other_image = other_image
-                obj.save()
             return obj
         except ObjectDoesNotExist:
             return False
