@@ -44,17 +44,17 @@ def chat_user(request,room,current_user):
 
 
 @csrf_exempt
-def set_room_mobile(request):
-    room_name = request.POST.get("room")
-    user = request.POST.get("user")
-    other_user = request.POST.get("other_user")
+def set_room_mobile(request,room,user1,user2):
+    room_name = room
+    user = user1
+    other_user = user2
     room = ChatBoxData.get_room(room_name)
     if room == False:
         room  =  ChatBoxData.create_room(room_name,user,other_user)
     #if "https://kuboc.rextexh.com/" in request.META['HTTP_HOST'] or "http://127.0.0.1:8000/" in request.META['HTTP_HOST']:
     #agent = ChatRoom.send_user_agent(room,user)
     if room:
-        return JsonResponse({"status":"success","room":room.room})
+        return redirect("chat_user" room=room, current_user=user)
     return JsonResponse({"status":"Not allowed"})
 
 
