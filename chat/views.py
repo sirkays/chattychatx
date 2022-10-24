@@ -59,8 +59,8 @@ def set_room_mobile(request,room,user1,user2):
 
 @csrf_exempt
 def try_now(request):
-    return render(request,'chat/index.html')
-    
+    return render(request,'chat/message.html')
+
 @csrf_exempt
 def set_room(request):
     room_name = request.POST.get("room")
