@@ -57,7 +57,10 @@ def set_room_mobile(request,room,user1,user2):
         return redirect("chat_user", room=room, current_user=user)
     return JsonResponse({"status":"Not allowed"})
 
-
+@csrf_exempt
+def try_now(request):
+    return render(request,'chat/index.html')
+    
 @csrf_exempt
 def set_room(request):
     room_name = request.POST.get("room")
