@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from chat.views import set_room
+from chat.views import set_room_mobile
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('chat/', include('chat.urls')),
