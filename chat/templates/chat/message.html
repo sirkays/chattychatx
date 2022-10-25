@@ -3641,22 +3641,8 @@ html {
                                     <p>Alright send an offer so we can work together</p>
                                     <span>4:04pm</span>
                             </div>-->
-                            {% for chat in chatbox.chats.all %}
-                            {% if chat.available %}
-                                {% if chat.user == '0' %}
-                                <div class="txt-msg left" style="margin-bottom:15px;">
-                                    <p>{{chat.message}}</p>
-                                    <span>{{chat.timestamp}}</span>
-                                </div>
-                                {% else %}
-                                <div class="txt-msg right" style="margin-bottom:15px;">
-                                    <p>{{chat.message}}</p>
-                                    <span>{{chat.timestamp}}</span>
-                                </div>
-                                {% endif %}
-                            {% endif %}
-                            {% endfor %}
-                            <!--<div class="msg-offer left">
+
+                            <div class="msg-offer left">
                                     <div>
                                         <h1>I can manage and create content for your instagram account</h1>
                                         <div class="details">
@@ -3669,7 +3655,7 @@ html {
                                         <span class="accepted d-none">Accepted</span>
                                     </div>
                                     <span>4:04pm</span>
-                            </div>-->
+                            </div>
 
                             
                         </div>
