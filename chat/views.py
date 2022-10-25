@@ -38,7 +38,8 @@ def chat_user(request,room,current_user):
         return render(request, 'chat/message.html', {
             'room_name': room.room,
             'user_agent':agent,
-            "chatbox":room
+            "chatbox":room,
+            "current_user":current_user
             
         })
     return redirect("index")
