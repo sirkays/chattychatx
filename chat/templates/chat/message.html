@@ -3980,20 +3980,23 @@ html {
     
             chatSocket.onmessage = function (e) {
                 const data = JSON.parse(e.data);
+                var today = new Date();
+                var timestamp = today.getHours()
+
                 //console.log(data.message);
                // document.querySelector('#chat-log').value += (data.message + '\n');
                 if(data.message_user == '0'){
                     $(".chat-messages-body").append(`
                     <div class="txt-msg left" style="margin-bottom:15px;">
                                     <p>${data.message}</p>
-                                    <span>${data.timestamp}</span>
+                                    <span>${timestamp}</span>
                             </div>
                 `)
                 }else{
                     $(".chat-messages-body").append(`
                     <div class="txt-msg right" style="margin-bottom:15px;">
                                     <p>${data.message}</p>
-                                    <span>${data.timestamp}</span>
+                                    <span>${timestamp}</span>
                             </div>
     
                 `)
