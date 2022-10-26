@@ -36,7 +36,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         #Create New Chat
         chat = Chat(chat_box=chat_box,message=message,user=message_user)
-        
+        timestamp = await chat.timestamp
         await database_sync_to_async(chat.save)()
         #timestamp = chat.timestamp
         # Send message to room group
@@ -46,7 +46,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 'type': 'chat_message',
                 'message': message,
                 'message_user':message_user,
-                'timestamp':"12:05am"
+                'timestamp':timestamp
             }
         )
 
