@@ -36,8 +36,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         #Create New Chat
         chat = Chat(chat_box=chat_box,message=message,user=message_user)
-
+        
         await database_sync_to_async(chat.save)()
+        timestamp = chat.timestamp
         # Send message to room group
         await self.channel_layer.group_send(
             self.room_group_name,
@@ -45,7 +46,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 'type': 'chat_message',
                 'message': message,
                 'message_user':message_user,
-                'timestamp':chat.timestamp
+                'timestamp':timestamp
             }
         )
 
