@@ -3641,7 +3641,7 @@ html {
                                     <p>Alright send an offer so we can work together</p>
                                     <span>4:04pm</span>
                             </div>-->
-                            {% for chat in chatbox.chats.all %}
+                            {% for chat in chats %}
                             {% if chat.available %}
                                 {% if chat.user == '0' %}
                                 <div class="txt-msg left" style="margin-bottom:15px;">

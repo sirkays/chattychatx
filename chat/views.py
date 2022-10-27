@@ -17,7 +17,7 @@ def get_chats(request,user):
 
 def room(request,room,current_user):
     room = ChatBoxData.get_room(room)
-
+    chats = Chat.objects.filter(chat_box=room)
     if room:
         if current_user == room.user1:
             agent = '0'
@@ -26,7 +26,7 @@ def room(request,room,current_user):
         return render(request, 'chat/room.html', {
             'room_name': room.room,
             'user_agent':agent,
-            "chatbox":room,
+            "chats":chats,
             "current_user":current_user
             
         })

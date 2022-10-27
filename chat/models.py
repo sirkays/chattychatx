@@ -31,5 +31,3 @@ class Chat(models.Model):
     user = models.CharField(max_length=250,default='')
     timestamp = models.DateTimeField(auto_now=True)
     available = models.BooleanField(default=True)
-
-
