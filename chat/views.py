@@ -1,13 +1,17 @@
 from django.shortcuts import render,redirect
 from django.http import JsonResponse,HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import ChatBoxData
+from .models import ChatBoxData,Chat
 
 def index(request):
     return render(request, 'chat/index.html', {})
 
 def new(request):
     return render(request, 'chat/new.html', {})
+
+def get_chats(request,user):
+    chats = Chat.objects.filter(user=user)
+    return JsonResponse({"chats":chats})
 
 
 def room(request,room,current_user):
