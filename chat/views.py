@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import JsonResponse,HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import ChatBoxData,Chat
-
+from django.core import serializers
 def index(request):
     return render(request, 'chat/index.html', {})
 
@@ -11,6 +11,7 @@ def new(request):
 
 def get_chats(request,user):
     chats = Chat.objects.filter(user=user)
+    chats = serializers.serialize('json', chats)
     return JsonResponse({"chats":chats})
 
 
