@@ -34,7 +34,7 @@ def room(request,room,current_user):
 
 def chat_user(request,room,current_user):
     room = ChatBoxData.get_room(room)
-
+    chats = Chat.objects.filter(chat_box=room)
     if room:
         if current_user == room.user1:
             agent = '0'
@@ -43,7 +43,7 @@ def chat_user(request,room,current_user):
         return render(request, 'chat/message.html', {
             'room_name': room.room,
             'user_agent':agent,
-            "chatbox":room,
+            "chats":chats,
             "current_user":current_user
             
         })
