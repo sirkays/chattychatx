@@ -37,14 +37,16 @@ def chat_user(request,room,current_user):
     chats = Chat.objects.filter(chat_box=room)
     if room:
         if current_user == room.user1:
+            user_n = room.user2
             agent = '0'
         else:
+            user_n = room.user1
             agent = '1'
         return render(request, 'chat/message.html', {
             'room_name': room.room,
             'user_agent':agent,
             "chats":chats,
-            "current_user":current_user
+            "current_user":user_n
             
         })
     return redirect("index")
